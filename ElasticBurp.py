@@ -33,7 +33,7 @@ except:
 reDateHeader = re.compile("^Date:\s*(.*)$", flags=re.IGNORECASE)
 
 ### Config (TODO: move to config tab) ###
-ES_host = "vmhost.fake"
+ES_host = "localhost"
 ES_index = "wase-burp"
 Burp_Tools = IBurpExtenderCallbacks.TOOL_PROXY
 Burp_onlyResponses = True       # Usually what you want, responses also contain requests
