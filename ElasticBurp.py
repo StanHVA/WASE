@@ -33,7 +33,7 @@ except:
 reDateHeader = re.compile("^Date:\s*(.*)$", flags=re.IGNORECASE)
 
 ### Config (TODO: move to config tab) ###
-ES_host = "localhost"
+ES_host = "vmhost.fake"
 ES_index = "wase-burp"
 Burp_Tools = IBurpExtenderCallbacks.TOOL_PROXY
 Burp_onlyResponses = True       # Usually what you want, responses also contain requests
@@ -68,7 +68,7 @@ class BurpExtender(IBurpExtender, IHttpListener, IContextMenuFactory, ITab):
             print("Connecting to '%s', index '%s'" % (self.confESHost, self.confESIndex))
             self.es = connections.create_connection(hosts=[self.confESHost])
             self.idx = Index(self.confESIndex)
-            self.idx.doc_type(DocHTTPRequestResponse)
+            self.idx.document(DocHTTPRequestResponse)
             if self.idx.exists():
                 self.idx.open()
             else:
